@@ -3,201 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeya Suriya Portfolio</title>
+  <title>Portfolio - Jeya Suriya</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Modern Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    /* Smooth slide for mobile menu */
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.35s ease-in-out;
+    }
+    #mobile-menu.show {
+      transform: translateX(0);
+    }
+    /* Gradient underline on hover */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: linear-gradient(to right, #6366F1, #A855F7, #EC4899);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 relative">
 
-  <!-- Navbar -->
-  <header class="bg-gray-900 text-white fixed w-full z-50 shadow">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold">Jeya Suriya</h1>
-      <nav class="hidden md:flex space-x-6">
-        <a href="#about" class="hover:text-gray-300">About</a>
-        <a href="#skills" class="hover:text-gray-300">Skills</a>
-        <a href="#experience" class="hover:text-gray-300">Experience</a>
-        <a href="#projects" class="hover:text-gray-300">Projects</a>
-        <a href="#achievements" class="hover:text-gray-300">Achievements</a>
-        <a href="#awards" class="hover:text-gray-300">Awards</a>
-        <a href="#contact" class="hover:text-gray-300">Contact</a>
-      </nav>
-      <div class="md:hidden">
-        <button id="menuBtn" class="focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div id="mobileMenu" class="hidden bg-gray-800 md:hidden">
-      <a href="#about" class="block px-4 py-2 hover:bg-gray-700">About</a>
-      <a href="#skills" class="block px-4 py-2 hover:bg-gray-700">Skills</a>
-      <a href="#experience" class="block px-4 py-2 hover:bg-gray-700">Experience</a>
-      <a href="#projects" class="block px-4 py-2 hover:bg-gray-700">Projects</a>
-      <a href="#achievements" class="block px-4 py-2 hover:bg-gray-700">Achievements</a>
-      <a href="#awards" class="block px-4 py-2 hover:bg-gray-700">Awards</a>
-      <a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
-    </div>
-  </header>
+<body class="bg-gray-50 text-gray-900">
 
-  <!-- Hero Section -->
-  <section class="bg-gray-900 text-white pt-28 pb-16" data-aos="fade-up">
-    <div class="container mx-auto flex flex-col md:flex-row items-center px-4">
-      <div class="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4">Hello, I'm Jeya Suriya</h2>
-        <p class="text-lg md:text-xl mb-6">Passionate Software Developer & Web Enthusiast</p>
-        <a href="resume.pdf" download class="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-500 transition mr-4">Download Resume</a>
-        <a href="#projects" class="bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 transition">View Work</a>
-      </div>
-      <div class="md:w-1/2 flex justify-center">
-        <img src="profile.jpg" alt="Profile Photo" class="w-48 h-48 md:w-64 md:h-64 rounded-full shadow-lg object-cover">
-      </div>
-    </div>
-  </section>
+<!-- Navbar -->
+<nav class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <!-- Logo -->
+    <a href="index.html" 
+   class="text-2xl font-semibold tracking-tight 
+          bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 
+          bg-clip-text text-transparent">
+  Jeya Suriya
+</a>
 
-  <!-- About Section -->
-  <section id="about" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-right">
-    <h2 class="text-3xl font-bold mb-4">About Me</h2>
-    <p class="text-gray-700 leading-relaxed">
-      I am a software developer specializing in web and full-stack applications. Skilled in Java, JavaScript, Spring Boot, React, and Tailwind CSS. I enjoy creating modern, responsive, and user-friendly websites.
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-8 text-[15px] font-semibold tracking-wide">
+      <li><a href="index.html" class="bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent nav-link">Home</a></li>
+      <li><a href="about.html" class="text-gray-700 hover:text-purple-600 nav-link">About</a></li>
+      <li><a href="work.html" class="text-gray-700 hover:text-pink-600 nav-link">Work</a></li>
+      <li><a href="award.html" class="text-gray-700 hover:text-purple-600 nav-link">Award</a></li>
+      <li><a href="contact.html" class="text-gray-700 hover:text-pink-600 nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Hamburger -->
+    <button onclick="toggleMenu()" class="md:hidden text-3xl text-indigo-600 focus:outline-none">
+      &#9776;
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul id="mobile-menu" class="hidden md:hidden flex flex-col bg-white px-6 pb-6 space-y-4 shadow-md border-t border-gray-200 text-lg font-medium">
+    <li><a href="index.html" class="block py-2 bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent">Home</a></li>
+    <li><a href="about.html" class="block py-2 hover:text-purple-600">About</a></li>
+    <li><a href="work.html" class="block py-2 hover:text-pink-600">Work</a></li>
+    <li><a href="award.html" class="block py-2 hover:text-purple-600">Award</a></li>
+    <li><a href="contact.html" class="block py-2 hover:text-pink-600">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative h-[68vh] flex items-center justify-center text-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <!-- Profile -->
+    <div class="relative inline-block">
+      <img src="assets/profile.png" alt="Profile"
+           class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-lg transition transform hover:scale-105">
+      <span class="absolute -bottom-2 -right-2 w-5 h-5 bg-green-400 rounded-full border-2 border-white"></span>
+    </div>
+
+<h1 class="mt-6 text-4xl md:text-6xl tracking-wide leading-tight 
+           bg-clip-text text-transparent 
+           bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200"
+    style="font-family: 'Poppins', sans-serif;">
+  Jeya Suriya C
+</h1>
+
+
+    <!-- Subtitle -->
+    <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+      System Engineer • Developer • Java • Spring Boot • Python • Django
     </p>
-  </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-left">
-    <h2 class="text-3xl font-bold mb-6">Skills</h2>
-    <div class="space-y-4">
-      <div>
-        <p class="font-semibold">JavaScript</p>
-        <div class="w-full bg-gray-200 rounded-full h-4">
-          <div class="bg-blue-600 h-4 rounded-full" style="width:90%"></div>
-        </div>
-      </div>
-      <div>
-        <p class="font-semibold">Java & Spring Boot</p>
-        <div class="w-full bg-gray-200 rounded-full h-4">
-          <div class="bg-green-600 h-4 rounded-full" style="width:85%"></div>
-        </div>
-      </div>
-      <div>
-        <p class="font-semibold">React & Tailwind CSS</p>
-        <div class="w-full bg-gray-200 rounded-full h-4">
-          <div class="bg-purple-600 h-4 rounded-full" style="width:80%"></div>
-        </div>
-      </div>
-      <div>
-        <p class="font-semibold">Database & SQL</p>
-        <div class="w-full bg-gray-200 rounded-full h-4">
-          <div class="bg-yellow-600 h-4 rounded-full" style="width:75%"></div>
-        </div>
-      </div>
+    <!-- Buttons -->
+    <div class="mt-6 flex flex-wrap justify-center gap-4">
+      <a href="assets/resume.pdf" download 
+         class="px-6 py-2 rounded-full bg-white text-purple-700 font-semibold shadow hover:bg-purple-100 transition transform hover:scale-105">
+        📄 Download Resume
+      </a>
+      <a href="#contact" 
+         class="px-6 py-2 rounded-full border border-white font-medium hover:bg-white/20 transition transform hover:scale-105">
+        ✉️ Contact Me
+      </a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Experience Section -->
-  <section id="experience" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-right">
-    <h2 class="text-3xl font-bold mb-6">Experience</h2>
-    <div class="space-y-6">
-      <div>
-        <h3 class="text-xl font-semibold">Software Developer - XYZ Company</h3>
-        <span class="text-gray-500">Jan 2023 - Present</span>
-        <p class="mt-2">Built full-stack applications with Spring Boot and React. Optimized backend APIs and implemented responsive UI components.</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold">Intern - ABC Solutions</h3>
-        <span class="text-gray-500">Jun 2022 - Dec 2022</span>
-        <p class="mt-2">Worked on front-end features using Tailwind CSS and JavaScript. Optimized UI for mobile devices and accessibility.</p>
-      </div>
-    </div>
-  </section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 text-center py-6 mt-10">
+  <p>© 2025 Jeya Suriya. All rights reserved.</p>
+  <div class="flex justify-center space-x-6 mt-3 text-xl">
+    <a href="https://wa.me/919361288897" target="_blank" class="hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+919361288897" class="hover:text-blue-400"><i class="fas fa-phone"></i></a>
+    <a href="mailto:cjsuriya96@gmail.com" class="hover:text-red-400"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/jeya-suriya-c/" target="_blank" class="hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+    <a href="https://teams.microsoft.com/l/chat/0/0?users=cjsuriya96@gmail.com" target="_blank" class="hover:text-purple-400"><i class="fas fa-video"></i></a>
+  </div>
+</footer>
 
-  <!-- Projects Section -->
-  <section id="projects" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-6">Projects</h2>
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="p-4 bg-gray-100 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1">
-        <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
-        <p class="mb-2">Modern portfolio built with HTML, Tailwind CSS, and JavaScript. Fully responsive and mobile-friendly.</p>
-        <a href="#" class="text-blue-600 font-semibold hover:underline">View</a>
-      </div>
-      <div class="p-4 bg-gray-100 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1">
-        <h3 class="text-xl font-semibold mb-2">Task Manager App</h3>
-        <p class="mb-2">Full-stack task manager app using Spring Boot, React, and MySQL. Features CRUD operations and user authentication.</p>
-        <a href="#" class="text-blue-600 font-semibold hover:underline">View</a>
-      </div>
-      <div class="p-4 bg-gray-100 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1">
-        <h3 class="text-xl font-semibold mb-2">E-commerce Website</h3>
-        <p class="mb-2">React + Node.js e-commerce website with shopping cart, product filtering, and responsive design.</p>
-        <a href="#" class="text-blue-600 font-semibold hover:underline">View</a>
-      </div>
-    </div>
-  </section>
+<script>
+  function toggleMenu() {
+    document.getElementById("mobile-menu").classList.toggle("show");
+  }
+</script>
 
-  <!-- Achievements Section -->
-  <section id="achievements" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-left">
-    <h2 class="text-3xl font-bold mb-6">Achievements</h2>
-    <ul class="list-disc list-inside space-y-2 text-gray-700">
-      <li>Completed 100+ coding challenges on LeetCode.</li>
-      <li>Top 10% in Google Hash Code 2024 online competition.</li>
-      <li>Certified Java & Spring Boot Developer.</li>
-    </ul>
-  </section>
-
-  <!-- Awards Section -->
-  <section id="awards" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-right">
-    <h2 class="text-3xl font-bold mb-6">Awards</h2>
-    <ul class="list-disc list-inside space-y-2 text-gray-700">
-      <li>Best Intern Award - ABC Solutions 2022</li>
-      <li>Winner - College Hackathon 2023</li>
-      <li>Excellence in Coding - XYZ Coding Contest 2024</li>
-    </ul>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-md" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
-    <form id="contactForm" class="flex flex-col gap-4">
-      <input type="text" placeholder="Name" required class="p-3 border border-gray-300 rounded">
-      <input type="email" placeholder="Email" required class="p-3 border border-gray-300 rounded">
-      <textarea placeholder="Message" required class="p-3 border border-gray-300 rounded"></textarea>
-      <button type="submit" class="bg-gray-900 text-white p-3 rounded hover:bg-gray-700 transition">Send</button>
-    </form>
-    <p id="msg" class="mt-2 text-green-600 font-semibold"></p>
-  </section>
-
-  <!-- Scroll to top -->
-  <button id="scrollTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full hidden hover:bg-blue-500 transition">
-    ↑
-  </button>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white text-center p-6 mt-12">
-    &copy; 2025 Jeya Suriya. All rights reserved.
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    // Scroll to top button
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) scrollTopBtn.classList.remove('hidden');
-      else scrollTopBtn.classList.add('hidden');
-    });
-    scrollTopBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-  </script>
 </body>
 </html>
