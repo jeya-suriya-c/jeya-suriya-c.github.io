@@ -6,55 +6,23 @@
   <title>Portfolio - Jeya Suriya</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Modern Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    /* Smooth slide for mobile menu */
-    #mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.35s ease-in-out;
-    }
-    #mobile-menu.show {
-      transform: translateX(0);
-    }
-    /* Gradient underline on hover */
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      left: 0;
-      bottom: -4px;
-      background: linear-gradient(to right, #6366F1, #A855F7, #EC4899);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
+    #mobile-menu { transform: translateX(100%); transition: transform 0.35s ease-in-out; }
+    #mobile-menu.show { transform: translateX(0); }
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after { content: ''; position: absolute; width: 0%; height: 2px; left: 0; bottom: -4px; background: linear-gradient(to right, #6366F1, #A855F7, #EC4899); transition: width 0.3s ease; }
+    .nav-link:hover::after { width: 100%; }
+    #certPdfViewer { display: none;}
   </style>
 </head>
-
 <body class="bg-gray-50 text-gray-900">
 
 <!-- Navbar -->
 <nav class="sticky top-0 z-50 bg-white shadow-md">
   <div class="container mx-auto flex justify-between items-center py-4 px-6">
-    <!-- Logo -->
-    <a href="index.html" 
-   class="text-2xl font-semibold tracking-tight 
-          bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 
-          bg-clip-text text-transparent">
-  Jeya Suriya
-</a>
-
-    <!-- Desktop Menu -->
+    <a href="index.html" class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">Jeya Suriya</a>
     <ul class="hidden md:flex space-x-8 text-[15px] font-semibold tracking-wide">
       <li><a href="index.html" class="text-gray-700 hover:text-pink-600 nav-link">Home</a></li>
       <li><a href="about.html" class="text-gray-700 hover:text-pink-600 nav-link">About</a></li>
@@ -62,14 +30,8 @@
       <li><a href="award.html" class="bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent nav-link">Award</a></li>
       <li><a href="contact.html" class="text-gray-700 hover:text-pink-600 nav-link">Contact</a></li>
     </ul>
-
-    <!-- Mobile Hamburger -->
-    <button onclick="toggleMenu()" class="md:hidden text-3xl text-indigo-600 focus:outline-none">
-      &#9776;
-    </button>
+    <button onclick="toggleMenu()" class="md:hidden text-3xl text-indigo-600 focus:outline-none">&#9776;</button>
   </div>
-
-  <!-- Mobile Menu -->
   <ul id="mobile-menu" class="hidden md:hidden flex flex-col bg-white px-6 pb-6 space-y-4 shadow-md border-t border-gray-200 text-lg font-medium">
     <li><a href="index.html" class="block py-2 hover:text-pink-600">Home</a></li>
     <li><a href="about.html" class="block py-2 hover:text-pink-600">About</a></li>
@@ -79,130 +41,103 @@
   </ul>
 </nav>
 
-  <!-- Award Section -->
+<!-- Award Section -->
 <section class="py-12 bg-gray-100">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-8">Awards & Certifications</h2>
-
     <div class="flex flex-col md:flex-row gap-6">
-      
-      <!-- Left Side Menu -->
-      <div class="w-full md:w-1/3 bg-white shadow rounded-lg p-4">
+
+      <!-- Sidebar -->
+      <div class="w-full md:w-1/3 bg-white shadow-lg rounded-lg p-5">
         <h3 class="text-xl font-semibold mb-4">Categories</h3>
         <div id="categories" class="space-y-4">
 
-          <!-- Hackathon -->
           <div>
-            <button onclick="toggleCategory('hackathonList')" 
-                    class="w-full text-left font-semibold hover:text-blue-600">
-              Hackathon ⬇
+            <button onclick="toggleCategory('awardList')" class="w-full flex justify-between items-center font-semibold hover:text-blue-600">
+              TCS Gem Award <i class="fas fa-chevron-down"></i>
             </button>
-            <ul id="hackathonList" class="hidden pl-4 mt-2 space-y-2">
-              <li><button onclick="showCert('Hackathon_Winner.pdf')">Hackathon Winner</button></li>
-              <li><button onclick="showCert('Hackathon_Finalist.pdf')">Hackathon Finalist</button></li>
+            <ul id="awardList" class="hidden pl-4 mt-2 space-y-2 text-gray-700">
+              <li><button onclick="showCert('Star_of_the_Month_Award_.pdf', true)" class="hover:text-pink-600 w-full text-left">Star of the Month Award - July 2025</button></li>
+              <li><button onclick="showCert('Star_Team_Award_.pdf', true)" class="hover:text-pink-600 w-full text-left">Star Team Award - July 2025</button></li>
+              <li><button onclick="showCert('Star_of_the_Quarter_Award.pdf', true)" class="hover:text-pink-600 w-full text-left">Star_of_the_Quarter_Award - Jan 2025</button></li>
+              <li><button onclick="showCert('Star_of_the_Month_Award.pdf', true)" class="hover:text-pink-600 w-full text-left">Star of the Month Award - Jan 2025</button></li>
+              <li><button onclick="showCert('Star_Team_Award.pdf', true)" class="hover:text-pink-600 w-full text-left">Star Team Award - Jan 2025</button></li>
+              <li><button onclick="showCert('On_The_Spot_Award.pdf', true)" class="hover:text-pink-600 w-full text-left">On The Spot Award - Jun 2025</button></li>
             </ul>
           </div>
 
-          <!-- Chess -->
           <div>
-            <button onclick="toggleCategory('chessList')" 
-                    class="w-full text-left font-semibold hover:text-blue-600">
-              Chess ⬇
+            <button onclick="toggleCategory('hackathonList')" class="w-full flex justify-between items-center font-semibold hover:text-blue-600">
+              Hackathon <i class="fas fa-chevron-down"></i>
             </button>
-            <ul id="chessList" class="hidden pl-4 mt-2 space-y-2">
-              <li><button onclick="showCert('Chess_Gold.pdf')">Chess Gold</button></li>
-              <li><button onclick="showCert('Chess_Silver.pdf')">Chess Silver</button></li>
+            <ul id="hackathonList" class="hidden pl-4 mt-2 space-y-2 text-gray-700">
+              <li><button onclick="showCert('Hackathon_Delhi.jpg', false)" class="hover:text-pink-600 w-full text-left">National Level - 2nd Runner Up</button></li>
+              <li><button onclick="showCert('Hackathon_Gujarat.jpg', false)" class="hover:text-pink-600 w-full text-left">National Level - 2nd Runner Up</button></li>
+              <li><button onclick="showCert('Hackathon_Tamil_Nadu.jpg', false)" class="hover:text-pink-600 w-full text-left">State Level - Winner</button></li>
             </ul>
           </div>
 
-          <!-- Programming -->
           <div>
-            <button onclick="toggleCategory('programmingList')" 
-                    class="w-full text-left font-semibold hover:text-blue-600">
-              Programming ⬇
+            <button onclick="toggleCategory('coursesList')" class="w-full flex justify-between items-center font-semibold hover:text-blue-600">
+              Programming Hub <i class="fas fa-chevron-down"></i>
             </button>
-            <ul id="programmingList" class="hidden pl-4 mt-2 space-y-2">
-              <li><button onclick="showCert('Python_Cert.pdf')">Python Certification</button></li>
-              <li><button onclick="showCert('Java_Cert.pdf')">Java Certification</button></li>
-              <li><button onclick="showCert('DSA_Cert.pdf')">DSA Certification</button></li>
+            <ul id="coursesList" class="hidden pl-4 mt-2 space-y-2 text-gray-700">
+              <li><button onclick="showCert('HTML.jpg', false)" class="hover:text-pink-600 w-full text-left">HTML Basic</button></li>
+              <li><button onclick="showCert('HTML_Advanced.jpg', false)" class="hover:text-pink-600 w-full text-left">HTML Advanced</button></li>
+              <li><button onclick="showCert('CSS.jpg', false)" class="hover:text-pink-600 w-full text-left">CSS Basic</button></li>
+              <li><button onclick="showCert('Bulma_CSS.jpg', false)" class="hover:text-pink-600 w-full text-left">Bulma CSS</button></li>
+              <li><button onclick="showCert('Java_Script.jpg', false)" class="hover:text-pink-600 w-full text-left">JavaScript Basic</button></li>
+              <li><button onclick="showCert('Java_Script_Advanced.jpg', false)" class="hover:text-pink-600 w-full text-left">JavaScript Advanced</button></li>
+              <li><button onclick="showCert('JQuery.jpg', false)" class="hover:text-pink-600 w-full text-left">JQuery Basic</button></li>
             </ul>
           </div>
-
-          <!-- Add more categories like TCs Gems, Presentation, Designing, etc. -->
 
         </div>
       </div>
 
-      <!-- Right Side PDF Viewer -->
-      <div class="w-full md:w-2/3 bg-white shadow rounded-lg p-4">
-        <h3 id="certTitle" class="text-xl font-semibold mb-4">Certificate Preview</h3>
-        <iframe id="certViewer" src="On_The_Spot_Award.pdf" 
-                width="100%" height="600px" 
-                class="rounded-lg shadow"></iframe>
-      </div>
-
+<!-- PDF / Image Viewer -->
+<div class="w-full md:w-2/3 bg-white shadow-lg rounded-lg p-5 flex flex-col items-center">
+  <h3 id="certTitle" class="text-xl font-semibold mb-4 text-center">Certificate Preview</h3>
+  <div class="w-full h-[60vh] md:h-[600px] flex justify-center items-center overflow-hidden rounded-lg shadow">
+    <img id="certViewer" src="assets/Hackathon_Delhi.jpg" alt="Certificate" class="w-full h-full object-contain">
+    <iframe id="certPdfViewer" src="assets/On_The_Spot_Award.pdf" width="100%" height="600px" class="rounded-lg shadow"></iframe>
+  </div>
+</div>
     </div>
   </div>
 </section>
 
-  <!-- Footer will be loaded here -->
+<!-- Footer -->
 <footer class="bg-gray-800 text-gray-300 text-center py-6 mt-10">
-    <p>© 2025 Jeya Suriya. All rights reserved.</p>
-
-    <div class="flex justify-center space-x-6 mt-3 text-xl">
-      <!-- WhatsApp -->
-      <a href="https://wa.me/919361288897" target="_blank" class="hover:text-green-500">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-
-      <!-- Phone -->
-      <a href="tel:+919361288897" class="hover:text-blue-400">
-        <i class="fas fa-phone"></i>
-      </a>
-
-      <!-- Email -->
-      <a href="mailto:cjsuriya96@gmail.com" class="hover:text-red-400">
-        <i class="fas fa-envelope"></i>
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/jeya-suriya-c/" target="_blank" class="hover:text-blue-500">
-        <i class="fab fa-linkedin"></i>
-      </a>
-
-      <!-- Microsoft Teams -->
-      <a href="https://teams.microsoft.com/l/chat/0/0?users=cjsuriya96@gmail.com" target="_blank" class="hover:text-purple-400">
-        <i class="fas fa-video"></i> <!-- Teams doesn't have official FA icon -->
-      </a>
-    </div>
-  </footer>
+  <p>© 2025 Jeya Suriya. All rights reserved.</p>
+  <div class="flex justify-center space-x-6 mt-3 text-xl flex-wrap">
+    <a href="https://wa.me/919361288897" target="_blank" class="hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+919361288897" class="hover:text-blue-400"><i class="fas fa-phone"></i></a>
+    <a href="mailto:cjsuriya96@gmail.com" class="hover:text-red-400"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/jeya-suriya-c/" target="_blank" class="hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+    <a href="https://teams.microsoft.com/l/chat/0/0?users=cjsuriya96@gmail.com" target="_blank" class="hover:text-purple-400"><i class="fas fa-video"></i></a>
+  </div>
+</footer>
 
 <script>
-  const carousel = document.querySelector('.carousel');
-  const slides = document.querySelectorAll('.carousel > div');
-  const totalSlides = slides.length;
-  let index = 0;
-
-  document.getElementById('next').addEventListener('click', () => {
-    index = (index + 1) % totalSlides;
-    carousel.style.transform = `translateX(-${index * 100}%)`;
-  });
-
-  document.getElementById('prev').addEventListener('click', () => {
-    index = (index - 1 + totalSlides) % totalSlides;
-    carousel.style.transform = `translateX(-${index * 100}%)`;
-  });
-</script>
-<script>
-  function toggleCategory(id) {
-    const list = document.getElementById(id);
-    list.classList.toggle("hidden");
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('show');
   }
-
-  function showCert(file) {
-    document.getElementById('certViewer').src = file;
-    document.getElementById('certTitle').innerText = 
-      "Certificate: " + file.replace('.pdf','').replaceAll('_',' ');
+  function toggleCategory(id) {
+    document.getElementById(id).classList.toggle('hidden');
+  }
+  
+  function showCert(file, isPdf) {
+    document.getElementById('certTitle').innerText = "Certificate: " + file.replace('.pdf','').replaceAll('_',' ');
+    if(isPdf) {
+      document.getElementById('certViewer').style.display = 'none';
+      document.getElementById('certPdfViewer').style.display = 'block';
+      document.getElementById('certPdfViewer').src = 'assets/'+file;
+    } else {
+      document.getElementById('certPdfViewer').style.display = 'none';
+      document.getElementById('certViewer').style.display = 'block';
+      document.getElementById('certViewer').src = 'assets/'+file;
+    }
   }
 </script>
 
